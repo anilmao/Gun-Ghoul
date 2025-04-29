@@ -1,0 +1,10 @@
+bullet_speed = 0; // speed of bullet
+hspd = 0; // horizontal speed
+vspd = 0; // vertical speed
+destroy = false; // if true, activates destroy sequence [should be false by default]
+enemybullet = false; // is this bullet shot from an enemy's gun?
+damage = 1; // damage the bullet will deal
+do_bounce = false;
+bounce_amount = 6;
+bounce_left = bounce_amount;
+drop_ammo = false;
