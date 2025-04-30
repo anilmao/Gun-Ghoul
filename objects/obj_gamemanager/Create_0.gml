@@ -7,4 +7,4 @@ sprite_index = noone; // set object sprite to empty
 display_set_gui_size(GAME_RES_WIDTH, GAME_RES_HEIGHT); // sets GUI layer size
 
 player_health_shaker = 0; // player health text shake force
-show_player_hud = true;
+show_player_hud = true; // enable or disable player hud

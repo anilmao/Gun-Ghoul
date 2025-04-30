@@ -1,8 +1,8 @@
-if(showdebugui) //if debug ui is enabled
+if(showdebugui) // if debug ui is enabled
 {
-    showdebugui = false; //disable debug ui
+    showdebugui = false; // disable debug ui
 }
 else 
 {
-    showdebugui = true; //enable debug ui
+    showdebugui = true; // enable debug ui
 }

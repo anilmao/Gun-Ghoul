@@ -4,13 +4,15 @@ var alt_key;
 sprite_angle = round(point_direction(x,y,mouse_x,mouse_y)) // set sprite_angle to face the mouse
 center_y = y + weapon_y_offset; // get center of player y and add y offset
 
-if(rapid)
+if(rapid) // if weapon is automatic
 {
+    // change input check to every frame
     shoot_key = mouse_check_button(mb_left);
     alt_key = mouse_check_button(mb_right);
 }
-else
+else // if weapon is not automatic
 {
+    // change input check to once
     shoot_key = mouse_check_button_pressed(mb_left);
     alt_key = mouse_check_button_pressed(mb_right);
 }
@@ -64,10 +66,10 @@ if(place_meeting(x, y, obj_bullet_parent)) // check if any damage source collide
         
         if(_inst.enemybullet == true && inv_frames_current <= 0)
         {
-            //take damage
+            // take damage
             global.player_hp -= _inst.damage;
             
-            //destroy damage source instance
+            // destroy damage source instance
             _inst.destroy = true;
             
             inv_frames_current = inv_frames
@@ -79,40 +81,40 @@ if(place_meeting(x, y, obj_bullet_parent)) // check if any damage source collide
 }
 
 
-if(place_meeting(x,y+1,obj_solid)) //check if player has ground (obj_solid) below them
+if(place_meeting(x,y+1,obj_solid)) // check if player has ground (obj_solid) below them
 {
-    onground = true; //if the player has ground below them, set onground to true
+    onground = true; // if the player has ground below them, set onground to true
 }
 else
 {
-    onground = false; //if not, set onground to false
+    onground = false; // if not, set onground to false
 }
 
-if(onground) //if the player is on the ground
+if(onground) // if the player is on the ground
 {
-    //this makes the player slowly come to a stop when sliding
+    // this makes the player slowly come to a stop when sliding
     if(hspd > 0 || hspd < 0)
     {
-        var slowdown_speed = 0.15; //how fast the player slows down
+        var slowdown_speed = 0.15; // how fast the player slows down
         
-        hspd = lerp(hspd, 0, slowdown_speed); //slow the player down
+        hspd = lerp(hspd, 0, slowdown_speed); // slow the player down
     }
 }
 
-if(weapon_cooldown_timer > 0) //if cooldown timer is more than 0 (is active)
+if(weapon_cooldown_timer > 0) // if cooldown timer is more than 0 (is active)
 {
     weapon_cooldown_timer--; // start decreasing timer until it reaches 0
 }
 
-if(inv_frames_current > 0)
+if(inv_frames_current > 0) // if current invincibility frames are higher than 0
 {
-    inv_frames_current--;
+    inv_frames_current--; // decrease inv-frames until it reaches 0
 }
 
-weapon_cooldown_timer = clamp(weapon_cooldown_timer, 0, 9999); //clamp cooldown timer
-inv_frames_current = clamp(inv_frames_current, 0, 9999); //clamp inv frames
+weapon_cooldown_timer = clamp(weapon_cooldown_timer, 0, 9999); // clamp cooldown timer
+inv_frames_current = clamp(inv_frames_current, 0, 9999); // clamp inv frames
 
-//debug weapon switch
+// debug weapon switch
 if(keyboard_check_pressed(vk_f7))
 {
     scr_change_player(weapons.shotgun);
@@ -123,7 +125,7 @@ if(keyboard_check_pressed(vk_f8))
     scr_change_player(weapons.uzi);
 }
 
-//debug bullet switching
+// debug bullet switching
 if(keyboard_check_pressed(ord("E")))
 {
     bullet_sel++;
@@ -151,20 +153,20 @@ bullet_sel = clamp(bullet_sel, 0, array_length(global.sp_bullet)-1);
 // zero gravity test
 if(global.grav <= 0)
 {
-    //this makes the player slowly come to a stop horizontally while in zero g
+    // this makes the player slowly come to a stop horizontally while in zero g
     if(hspd > 0 || hspd < 0)
     {
-        var h_slowdown_speed = 0.02; //how fast the player slows down
+        var h_slowdown_speed = 0.02; // how fast the player slows down
         
-        hspd = lerp(hspd, 0, h_slowdown_speed); //slow the player down
+        hspd = lerp(hspd, 0, h_slowdown_speed); // slow the player down
     }
     
-    //this makes the player slowly come to a stop vertically while in zero g
+    // this makes the player slowly come to a stop vertically while in zero g
     if(vspd > 0 || vspd < 0)
     {
-        var v_slowdown_speed = 0.02; //how fast the player slows down
+        var v_slowdown_speed = 0.02; // how fast the player slows down
         
-        vspd = lerp(vspd, 0, v_slowdown_speed); //slow the player down
+        vspd = lerp(vspd, 0, v_slowdown_speed); // slow the player down
     }
 }
- */
+*/

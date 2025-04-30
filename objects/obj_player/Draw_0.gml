@@ -9,17 +9,17 @@ else
     yscale = 1;
 }
 
-//shows debug text/ui
+// shows debug text/ui
 if(showdebugui)
 {
-    draw_text(camera_get_view_x(view_camera[0])+64,camera_get_view_y(view_camera[0]),"am:" + string(ammo[bullet_sel]));
-    draw_text(camera_get_view_x(view_camera[0])+16,camera_get_view_y(view_camera[0])+16,"flr:" + string(onground));
-    draw_text(camera_get_view_x(view_camera[0])+16,camera_get_view_y(view_camera[0]),"sel:" + string(bullet_sel));
-    draw_text(camera_get_view_x(view_camera[0])+64,camera_get_view_y(view_camera[0])+16,"wpn:" + string(global.weapon_type));
-    draw_text(camera_get_view_x(view_camera[0])+128,camera_get_view_y(view_camera[0]),"invf:" + string(inv_frames_current));
-    draw_text(camera_get_view_x(view_camera[0])+128,camera_get_view_y(view_camera[0])+16,"cldwn:" + string(weapon_cooldown_timer));
+    draw_text(camera_get_view_x(view_camera[0])+64,camera_get_view_y(view_camera[0]),$"am: {ammo[bullet_sel]}");
+    draw_text(camera_get_view_x(view_camera[0])+16,camera_get_view_y(view_camera[0])+16,$"flr: {onground}");
+    draw_text(camera_get_view_x(view_camera[0])+16,camera_get_view_y(view_camera[0]),$"sel: {bullet_sel}");
+    draw_text(camera_get_view_x(view_camera[0])+64,camera_get_view_y(view_camera[0])+16,$"wpn: {global.weapon_type}");
+    draw_text(camera_get_view_x(view_camera[0])+128,camera_get_view_y(view_camera[0]),$"invf: {inv_frames_current}");
+    draw_text(camera_get_view_x(view_camera[0])+128,camera_get_view_y(view_camera[0])+16,$"cldwn: {weapon_cooldown_timer}");
     
-    //debug player hitbox
+    // debug player hitbox
     draw_rectangle_color(bbox_right,bbox_top,bbox_left,bbox_bottom, c_aqua, c_aqua, c_aqua, c_aqua, true);
 }
 
