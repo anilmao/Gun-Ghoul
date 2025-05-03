@@ -39,16 +39,25 @@ if(show_player_hud)
     var _bullet_icon_x = 55; // bullet sprite icon x
     var _bullet_icon_y = 2; // bullet sprite icon y
     
+    var _selection_ = obj_player.bullet_sel;
+    var _player_current_ammo = obj_player.ammo;
+    
     // draw special ammo sprite icon
-    draw_sprite_ext(global.bullet[global.sp_bullet[obj_player.bullet_sel], bullet_stats.icon] ,image_index , _bullet_icon_x , _bullet_icon_y , 1, 1, image_angle, image_blend , 0.5);
+    if(global.sp_bullet[_selection_] != -1)
+    { 
+        draw_sprite_ext(global.bullet[global.sp_bullet[_selection_], bullet_stats.icon] ,image_index , _bullet_icon_x , _bullet_icon_y , 1, 1, image_angle, image_blend , 0.5);
+    }
     
     var _ammo_x = _bullet_icon_x + 6; // ammo text x
     var _ammo_y = _bullet_icon_y - 1.5; // ammo text y
     
-    // draw special ammo text shadow
-    draw_text_transformed_color(_ammo_x+1,_ammo_y+1,string(obj_player.ammo[obj_player.bullet_sel]), 1 , 1, image_angle, c_black, c_black, c_black, c_black, 1);
-    // draw special ammo text
-    draw_text_transformed_color(_ammo_x,_ammo_y,string(obj_player.ammo[obj_player.bullet_sel]), 1 , 1, image_angle, #68d0d0, #68d0d0, #68d0d0, #68d0d0, 1);
+    if(_player_current_ammo[_selection_] != -1)
+    {
+        // draw special ammo text shadow
+        draw_text_transformed_color(_ammo_x+1,_ammo_y+1,string(_player_current_ammo[_selection_]), 1 , 1, image_angle, c_black, c_black, c_black, c_black, 1);
+        // draw special ammo text
+        draw_text_transformed_color(_ammo_x,_ammo_y,string(_player_current_ammo[_selection_]), 1 , 1, image_angle, #68d0d0, #68d0d0, #68d0d0, #68d0d0, 1);
+    }
 }
 
 #endregion

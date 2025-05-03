@@ -27,9 +27,9 @@ inv_frames_current = 0; // player CURRENT invincibility frames
 bullet_sel = 0; // special ammo inv selection
 
 // special bullet inventory
-global.sp_bullet[0] = bullet_type.split;
-global.sp_bullet[1] = bullet_type.regular;
-global.sp_bullet[2] = bullet_type.ghost;
+global.sp_bullet[0] = bullet_type.ghost;
+global.sp_bullet[1] = bullet_type.bounce;
+global.sp_bullet[2] = bullet_type.empty;
 
 // special bullet ammo
 ammo[0] = global.bullet[global.sp_bullet[0], bullet_stats.ammo];

@@ -37,7 +37,12 @@ else
     if(mask_index != spr_empty) // destroy bullet and prevent it from continuing after opening a door
     {
         // check for collision with bullet in specified area
-        var door_btn = collision_rectangle(x-10,y-15,x+5,y+15, obj_bullet_parent, false, true);
+        var _x1_ = 10;
+        var _y1_ = 15;
+        var _x2_ = 5;
+        var _y2_ = 15;
+        
+        var door_btn = collision_rectangle(x-_x1_,y-_y1_,x+_x2_,y+_y2_, obj_bullet_parent, false, true);
         
         instance_destroy(door_btn); // destroy bullet
     }

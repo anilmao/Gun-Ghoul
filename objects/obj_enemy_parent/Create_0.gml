@@ -18,6 +18,7 @@
     weapon_yscale = 1; // yscale of enemy weapon sprite
     weapon_offset = 1; // distance from center to weapon barrel
     wep_center_y = y; // var for storing player y center
+    drop_ammo = false; // should the enemy drop special ammo?
 #endregion
 
 #region ENEMY STATES

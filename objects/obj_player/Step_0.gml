@@ -1,5 +1,7 @@
 var shoot_key;
 var alt_key;
+var _switch_key = keyboard_check_pressed(ord("E"));
+var _switch_key_alt = keyboard_check_pressed(ord("Q"));
 
 sprite_angle = round(point_direction(x,y,mouse_x,mouse_y)) // set sprite_angle to face the mouse
 center_y = y + weapon_y_offset; // get center of player y and add y offset
@@ -25,6 +27,16 @@ if(shoot_key)
 if(alt_key)
 {
    player_fire_special(true);
+}
+
+if(_switch_key)
+{
+    bullet_sel += 1;
+}
+
+if(_switch_key_alt)
+{
+    bullet_sel -= 1;
 }
 
 vspd += global.grav; // apply gravity
@@ -72,14 +84,13 @@ if(place_meeting(x, y, obj_bullet_parent)) // check if any damage source collide
             // destroy damage source instance
             _inst.destroy = true;
             
-            inv_frames_current = inv_frames
+            inv_frames_current = inv_frames;
         }
     }
     
     // destroy ds list to free up memory
     ds_list_destroy(_instlist);
 }
-
 
 if(place_meeting(x,y+1,obj_solid)) // check if player has ground (obj_solid) below them
 {
@@ -103,7 +114,7 @@ if(onground) // if the player is on the ground
 
 if(weapon_cooldown_timer > 0) // if cooldown timer is more than 0 (is active)
 {
-    weapon_cooldown_timer--; // start decreasing timer until it reaches 0
+    weapon_cooldown_timer -= 1; // start decreasing timer until it reaches 0
 }
 
 if(inv_frames_current > 0) // if current invincibility frames are higher than 0
@@ -111,10 +122,7 @@ if(inv_frames_current > 0) // if current invincibility frames are higher than 0
     inv_frames_current--; // decrease inv-frames until it reaches 0
 }
 
-weapon_cooldown_timer = clamp(weapon_cooldown_timer, 0, 9999); // clamp cooldown timer
-inv_frames_current = clamp(inv_frames_current, 0, 9999); // clamp inv frames
-
-// debug weapon switch
+// debug weapon test
 if(keyboard_check_pressed(vk_f7))
 {
     scr_change_player(weapons.shotgun);
@@ -123,16 +131,6 @@ if(keyboard_check_pressed(vk_f7))
 if(keyboard_check_pressed(vk_f8))
 {
     scr_change_player(weapons.uzi);
-}
-
-// debug bullet switching
-if(keyboard_check_pressed(ord("E")))
-{
-    bullet_sel++;
-}
-if(keyboard_check_pressed(ord("Q")))
-{
-    bullet_sel--;
 }
 
 // health debug - W to increase, S to decrease player hp
@@ -145,9 +143,22 @@ if(keyboard_check(ord("S")))
     global.player_hp--;
 }
 
+var _sp_array_length = array_length(global.sp_bullet); // get length of special bullet inventory array
+
+if(bullet_sel < 0)
+{
+    bullet_sel = _sp_array_length-1
+}
+else if(bullet_sel > _sp_array_length-1)
+{
+    bullet_sel = 0;
+}
+
 // clamps
+
 global.player_hp = clamp(global.player_hp, 0, global.player_maxhp);
-bullet_sel = clamp(bullet_sel, 0, array_length(global.sp_bullet)-1);
+weapon_cooldown_timer = clamp(weapon_cooldown_timer, 0, 9999); // clamp cooldown timer
+inv_frames_current = clamp(inv_frames_current, 0, 9999); // clamp inv frames
 
 /*
 // zero gravity test

@@ -53,7 +53,7 @@ function scr_weapons()
     global.weapon[weapons.uzi,weapon_stats.bullet_amt] = 1;
     global.weapon[weapons.uzi,weapon_stats.bullet_speed] = 10;
     global.weapon[weapons.uzi,weapon_stats.recoil] = 4.5;
-    global.weapon[weapons.uzi,weapon_stats.cooldown] = 6;
+    global.weapon[weapons.uzi,weapon_stats.cooldown] = 5;
     global.weapon[weapons.uzi,weapon_stats.bullet_default] = bullet_type.regular;
     global.weapon[weapons.uzi,weapon_stats.bullet_spread] = 1;
     global.weapon[weapons.uzi,weapon_stats.rapid] = true;

@@ -26,6 +26,7 @@ function player_fire(_recoil = true) // if _recoil is true then it will apply re
             var _bullet_amount = bullet_amount // get bullet amount
             var _bullet_type = global.bullet[global.weapon[global.weapon_type, weapon_stats.bullet_default], bullet_stats.obj]; // type of bullet gun is shooting
             var _recoil_ = recoil; // recoil amount
+            var _sfx_ = weapon_sound; // get weapon sound
             
             for (var i = 0; i < _bullet_amount; i++)
             {
@@ -52,7 +53,7 @@ function player_fire(_recoil = true) // if _recoil is true then it will apply re
                 hspd = round(lengthdir_x(_recoil_, sprite_angle+180)); // left-right recoil
                 vspd = round(lengthdir_y(_recoil_, sprite_angle*-1)); // up recoil
             }
-            audio_play_sound(weapon_sound, 0, false); // play weapon sound [TEMP]
+            audio_play_sound(_sfx_, 0, false); // play weapon sound [TEMP]
         }
     }
 }
@@ -100,7 +101,7 @@ function player_fire_special(_special_recoil = true)
             ammo[bullet_sel] -= 1; // decrease special ammo
             audio_play_sound(_sfx_, 0, false); //play weapon sound [TEMP]
         }
-        else if(weapon_cooldown_timer <= 0 && ammo[bullet_sel] <= 0)
+        else if(weapon_cooldown_timer <= 0 && ammo[bullet_sel] <= 0 && global.sp_bullet[bullet_sel] != bullet_type.empty)
         {
             var _empty_sfx_ = snd_gun_empty;
             

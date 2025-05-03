@@ -30,7 +30,12 @@ if(showdoorui)
     { 
         if(door_state == doorstates.open)
         {
-            draw_rectangle_color(x-15,y-32,x+15,y+32, c_maroon, c_maroon, c_maroon, c_maroon, true); // draw playercheck area while door is open
+            var _x1_ = 15;
+            var _y1_ = 32;
+            var _x2_ = 15;
+            var _y2_ = 32;
+            
+            draw_rectangle_color(x-_x1_,y-_y1_,x+_x2_,y+_y2_, c_maroon, c_maroon, c_maroon, c_maroon, true); // draw playercheck area while door is open
         }
         draw_set_color(c_yellow);
         draw_text(x,y,"al:"+ string(alarm[0]));

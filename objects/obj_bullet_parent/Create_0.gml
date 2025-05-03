@@ -7,4 +7,3 @@ damage = 1; // damage the bullet will deal
 do_bounce = false;
 bounce_amount = 6;
 bounce_left = bounce_amount;
-drop_ammo = false;
